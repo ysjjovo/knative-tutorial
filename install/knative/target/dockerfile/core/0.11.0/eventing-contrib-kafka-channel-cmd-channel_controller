@@ -1,0 +1,1 @@
+FROM gcr.io/knative-releases/knative.dev/eventing-contrib/kafka/channel/cmd/channel_controller@sha256:cdf58cbaa34284ef33dd9353b3835fa70a5f851f965c79d7155fc1a44aae72f2
