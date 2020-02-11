@@ -10,5 +10,5 @@ knative依赖于k8s及istio
 
 - [k8s](install/1-k8s.md)
 - [istio](install/2-istio.md)
-- [knative](install/3-knative.md)
+- [knative](install/knative/README.md)
 

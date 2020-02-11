@@ -37,3 +37,15 @@ core包含serving和eventing,谷歌镜像无法下载，可以通过阿里云海
         └── monitor
             └── 0.11.0
 ```
+先运行第1，2步下载并生成Dockefile及yaml
+```bash
+version=0.11.0
+sh 1-get.sh $version &&\
+sh 2-gen.sh $version &&\
+```
+第3步clone仓库需要事先创建好对应的仓库，在target/dockerfile/core/0.11.0目录下会生成对应的Dockefile这里以eventing-cmd-apiserver_receive_adapter为例
+- 使用阿里云镜像服务创建名为kn-releases的命名空间，重名则换，如下图
+![image](http://github.com/ysjjovo/knative-tutorial/raw/v0.11.0/images/create-namespace.png)
+
+
+- 在github上创建名为eventing-cmd-apiserver_receive_adapter的仓库
