@@ -7,7 +7,7 @@ knative组件分三部分
 # core安装
 core包含serving和eventing,谷歌镜像无法下载，可以通过阿里云海外镜像构建新的镜像访问。步骤如下：
 - 从yaml文件里面提取出需要下载的镜像
-- 然后生成Dockfil
+- 然后生成Dockfile
 - 每个Dockfile生成一个代码仓库
 - 镜像服务里面关联对应Dockfile，设置构建规则自动构建
 
