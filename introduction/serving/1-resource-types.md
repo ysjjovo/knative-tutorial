@@ -1,4 +1,4 @@
-knative自定义了一套资源（CRDs）
+knative serving自定义了一套资源（CRDs）
 
 # Configuration
 包含分离的代码和配置，对它做任何更改都会产生新的版本
@@ -86,3 +86,6 @@ spec:
   - configurationName: telemetrysample-configuration
     percent: 100
 ```
+
+# 关系图
+![image](https://github.com/ysjjovo/knative-tutorial/raw/v0.11.0/images/serving-resource-relation.jpg)
