@@ -49,3 +49,59 @@ broker与trigger的关系图
 
 如果直接修改broker的spec.channelTemplateSpec属性会导致broker中的事件全部丢失
 
+# Event registry
+维护所有来自broker可消费的事件类型，指导消费者订阅相关事件。使用如下命令查看指定空间所有事件
+```bash
+kubectl get eventtypes -n <namespace>
+```
+如下命令查看特定事件
+```
+kubectl get eventtype dev.knative.source.github.push-xxx -o yaml
+```
+事件类型注册方式:
+- 手动注册 
+```bash
+kubectl apply -f <event_type.yaml>
+```
+- 自动注册，支持如下几种事件源
+  - CronJobSource
+  - ApiServerSource
+  - GithubSource
+  - GcpPubSubSource
+  - KafkaSource
+  - AwsSqsSource
+以KafkaSource为例
+```yaml
+apiVersion: sources.eventing.knative.dev/v1alpha1
+kind: KafkaSource
+metadata:
+  name: kafka-sample
+  namespace: default
+spec:
+  consumerGroup: knative-group
+  bootstrapServers: my-cluster-kafka-bootstrap.kafka:9092
+  topics: knative-demo,news
+  sink:
+    apiVersion: eventing.knative.dev/v1alpha1
+    kind: Broker
+    name: default
+```
+两个topic对应事件有两个,事件类型为
+```
+dev.knative.kafka.event(CloudEvents)
+```
+源
+- source: /apis/v1/namespaces/default/kafkasources/kafka-sample#knative-demo
+- source: /apis/v1/namespaces/default/kafkasources/kafka-sample#news
+
+目前仅支持sink为broker的事件自动生成
+
+# 构架
+1. 事件从源直接发送至Service(k8s service or knative service)，此时需要源做重试及缓存
+
+2. 事件发送至Channel，由channel实现重试，缓存等机制
+![image](../../images/control-plane.png)
+
+数据从各组件之间流转如图
+![image](../../images/data-plane.png)
+
