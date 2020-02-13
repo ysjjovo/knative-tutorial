@@ -105,3 +105,10 @@ dev.knative.kafka.event(CloudEvents)
 数据从各组件之间流转如图
 ![image](../../images/data-plane.png)
 
+# source
+事件源也是一种k8s自定义资源，如knative的事件分组为
+sources.eventing.knative.dev。K8S提供如下源：
+- [核心事件源](https://knative.dev/docs/eventing/sources/index.html)
+- [其它事件源](https://knative.dev/docs/eventing/sources/index.html)
+- 自定义事件源,需要实现自定义source,实现[示例](https://knative.dev/docs/eventing/samples/writing-a-source/index.html)
+或者带接收适配器的source,实现[示例](https://knative.dev/docs/eventing/samples/writing-receive-adapter-source)
