@@ -88,4 +88,4 @@ spec:
 ```
 
 # 关系图
-![image](https://github.com/ysjjovo/knative-tutorial/raw/v0.11.0/images/serving-resource-relation.jpg)
+![image](../../images/serving-resource-relation.jpg)
