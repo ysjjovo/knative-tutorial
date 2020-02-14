@@ -162,3 +162,23 @@ spec:
     apiVersion: messaging.knative.dev/v1alpha1
 ￼    kind: InMemoryChannel
 ```
+# Parallel
+提供事件分支功能，每一个分支会收到相同的事件
+分支定义如下：
+- branch属性（必须），branch是一个由filter（可选）,subscriber,replay（可选）三元组构建的列表,filter（可选）过滤事件交由subscriber处理，最后到reply
+- channelTemplate(可选)，不指定则使用默认值
+- reply(可选)
+- 
+[官方示例](https://knative.dev/docs/eventing/samples/parallel/multiple-branches/index.html)
+
+# Sequence
+提供事件顺序处理机制，每一步都可以对修改，过滤或生成新的事件
+定义如下：
+- Steps： 由订阅列表组成，订阅元素必须实现Adressable接口
+- ChannelTemplate：指定使用的channel
+- Reply(可选)
+示例：
+- [定时发送事件到序列](https://knative.dev/docs/eventing/samples/sequence/sequence-terminal/index.html)
+- [定时发送事件到序列并回复](https://knative.dev/docs/eventing/samples/sequence/sequence-reply-to-event-display/index.html)
+- [串联多个序列](https://knative.dev/docs/eventing/samples/sequence/sequence-with-broker-trigger/index.html)
+- [演示broker,trigger,序列混合交互](https://knative.dev/docs/eventing/samples/sequence/sequence-with-broker-trigger/index.html)
