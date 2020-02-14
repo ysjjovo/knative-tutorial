@@ -40,6 +40,7 @@ autoscaling.knative.dev/window: "60s"
  autoscaling.knative.dev/target: "50"
  ```
  需要严格限制容器并发数，则在Revison模板添加参数
+ # todo
  ```yaml
  containerConcurrency: 0 | 1 | 2-N
  ```

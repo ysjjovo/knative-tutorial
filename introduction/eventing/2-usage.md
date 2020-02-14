@@ -116,3 +116,49 @@ spec:
     kind: Broker
     name: default
 ```
+
+# 默认Channel
+当事件源及事件消费者不关心channel的实现时，我们可以不指定channel，这时会使用默认channel。默认channel通过如下命令配置
+```bash
+kubectl edit cm default-ch-webhook -n knative-eventing
+```
+如下示例配置集群默认channel为InMemoryChannel,单独指定some-namespace为KafkaChannel
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: default-ch-webhook
+  namespace: knative-eventing
+data:
+  default-ch-config: |
+    clusterDefault:
+      apiVersion: messaging.knative.dev/v1alpha1
+      kind: InMemoryChannel
+    namespaceDefaults:
+      some-namespace:
+        apiVersion: messaging.knative.dev/v1alpha1
+        kind: KafkaChannel
+        spec:
+          numPartitions: 2
+          replicationFactor: 1
+```
+有了如上配置后，创建时可以不指定channel，示例：
+```yaml
+apiVersion: messaging.knative.dev/v1alpha1
+kind: Channel
+metadata:
+  name: my-channel
+  namespace: default
+```
+等价于
+```yaml
+apiVersion: messaging.knative.dev/v1alpha1
+kind: Channel
+metadata:
+  name: my-channel
+  namespace: default
+spec:
+  channelTemplate:
+    apiVersion: messaging.knative.dev/v1alpha1
+￼    kind: InMemoryChannel
+```
