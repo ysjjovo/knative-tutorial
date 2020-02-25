@@ -1,6 +1,9 @@
 #!/bin/sh
+# sh 2-gen.sh 0.11.0 pcr-sz.paic.com.cn/knative-releases
+# sh 2-gen.sh 0.11.0 registry.cn-chengdu.aliyuncs.com/ysjjovo
 version=$1
 base_dir=$(sh ./get_base_dir.sh)
+repo_prefix=${2//\//\\/}
 
 dockerfile_dir=$base_dir/target/dockerfile/core/$version
 yaml_dir=$base_dir/target/yaml/core/$version
@@ -24,7 +27,7 @@ for ((i = 0; i < ${#arr[@]}; i += 1)); do
 FROM ${origin}
 EOF
         converted=${origin//\//\\/}
-        echo 's/'$converted'/registry.cn-chengdu.aliyuncs.com\/ysjjovo\/'$target_name:$version'/g' >>templete.sed
+        echo 's/'$converted'/'$repo_prefix'\/'$target_name:$version'/g' >>templete.sed
     done
 done
 
