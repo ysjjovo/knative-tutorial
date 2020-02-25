@@ -3,7 +3,7 @@ version=$1
 base_dir=$(sh ./get_base_dir.sh)
 
 dockerfile_dir=$base_dir/target/dockerfile/core/$version
-target_dir=$base_dir/..
+target_dir=$base_dir/../../../ali
 
 arr=($(ls $dockerfile_dir))
 # branch=release-v$version

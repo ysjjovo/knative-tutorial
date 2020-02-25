@@ -1,0 +1,1 @@
+FROM gcr.io/knative-releases/knative.dev/eventing-contrib/camel/source/cmd/controller@sha256:f2c1136391f71b8d0ad04071d2c05fbb360b010bc3d68cec5c94da432ddedf16

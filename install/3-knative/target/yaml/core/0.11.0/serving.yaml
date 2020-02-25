@@ -15,17 +15,17 @@ metadata:
     serving.knative.dev/release: "v0.11.0"
   name: knative-serving-addressable-resolver
 rules:
-  - apiGroups:
-      - serving.knative.dev
-    resources:
-      - routes
-      - routes/status
-      - services
-      - services/status
-    verbs:
-      - get
-      - list
-      - watch
+- apiGroups:
+  - serving.knative.dev
+  resources:
+  - routes
+  - routes/status
+  - services
+  - services/status
+  verbs:
+  - get
+  - list
+  - watch
 
 ---
 
@@ -40,12 +40,12 @@ metadata:
     serving.knative.dev/release: "v0.11.0"
   name: custom-metrics-server-resources
 rules:
-  - apiGroups:
-      - custom.metrics.k8s.io
-    resources:
-      - "*"
-    verbs:
-      - "*"
+- apiGroups:
+  - custom.metrics.k8s.io
+  resources:
+  - '*'
+  verbs:
+  - '*'
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -56,15 +56,15 @@ metadata:
     serving.knative.dev/release: "v0.11.0"
   name: knative-serving-namespaced-admin
 rules:
-  - apiGroups:
-      - serving.knative.dev
-      - networking.internal.knative.dev
-      - autoscaling.internal.knative.dev
-      - caching.internal.knative.dev
-    resources:
-      - "*"
-    verbs:
-      - "*"
+- apiGroups:
+  - serving.knative.dev
+  - networking.internal.knative.dev
+  - autoscaling.internal.knative.dev
+  - caching.internal.knative.dev
+  resources:
+  - '*'
+  verbs:
+  - '*'
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -74,18 +74,18 @@ metadata:
     serving.knative.dev/release: "v0.11.0"
   name: knative-serving-namespaced-edit
 rules:
-  - apiGroups:
-      - serving.knative.dev
-      - networking.internal.knative.dev
-      - autoscaling.internal.knative.dev
-      - caching.internal.knative.dev
-    resources:
-      - "*"
-    verbs:
-      - create
-      - update
-      - patch
-      - delete
+- apiGroups:
+  - serving.knative.dev
+  - networking.internal.knative.dev
+  - autoscaling.internal.knative.dev
+  - caching.internal.knative.dev
+  resources:
+  - '*'
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -95,23 +95,23 @@ metadata:
     serving.knative.dev/release: "v0.11.0"
   name: knative-serving-namespaced-view
 rules:
-  - apiGroups:
-      - serving.knative.dev
-      - networking.internal.knative.dev
-      - autoscaling.internal.knative.dev
-      - caching.internal.knative.dev
-    resources:
-      - "*"
-    verbs:
-      - get
-      - list
-      - watch
+- apiGroups:
+  - serving.knative.dev
+  - networking.internal.knative.dev
+  - autoscaling.internal.knative.dev
+  - caching.internal.knative.dev
+  resources:
+  - '*'
+  verbs:
+  - get
+  - list
+  - watch
 
 ---
 aggregationRule:
   clusterRoleSelectors:
-    - matchLabels:
-        serving.knative.dev/controller: "true"
+  - matchLabels:
+      serving.knative.dev/controller: "true"
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -128,110 +128,110 @@ metadata:
     serving.knative.dev/release: "v0.11.0"
   name: knative-serving-core
 rules:
-  - apiGroups:
-      - ""
-    resources:
-      - pods
-      - namespaces
-      - secrets
-      - configmaps
-      - endpoints
-      - services
-      - events
-      - serviceaccounts
-    verbs:
-      - get
-      - list
-      - create
-      - update
-      - delete
-      - patch
-      - watch
-  - apiGroups:
-      - ""
-    resources:
-      - endpoints/restricted
-    verbs:
-      - create
-  - apiGroups:
-      - apps
-    resources:
-      - deployments
-      - deployments/finalizers
-    verbs:
-      - get
-      - list
-      - create
-      - update
-      - delete
-      - patch
-      - watch
-  - apiGroups:
-      - admissionregistration.k8s.io
-    resources:
-      - mutatingwebhookconfigurations
-      - validatingwebhookconfigurations
-    verbs:
-      - get
-      - list
-      - create
-      - update
-      - delete
-      - patch
-      - watch
-  - apiGroups:
-      - apiextensions.k8s.io
-    resources:
-      - customresourcedefinitions
-    verbs:
-      - get
-      - list
-      - create
-      - update
-      - delete
-      - patch
-      - watch
-  - apiGroups:
-      - autoscaling
-    resources:
-      - horizontalpodautoscalers
-    verbs:
-      - get
-      - list
-      - create
-      - update
-      - delete
-      - patch
-      - watch
-  - apiGroups:
-      - serving.knative.dev
-      - autoscaling.internal.knative.dev
-      - networking.internal.knative.dev
-    resources:
-      - "*"
-      - "*/status"
-      - "*/finalizers"
-    verbs:
-      - get
-      - list
-      - create
-      - update
-      - delete
-      - deletecollection
-      - patch
-      - watch
-  - apiGroups:
-      - caching.internal.knative.dev
-    resources:
-      - images
-    verbs:
-      - get
-      - list
-      - create
-      - update
-      - delete
-      - patch
-      - watch
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - namespaces
+  - secrets
+  - configmaps
+  - endpoints
+  - services
+  - events
+  - serviceaccounts
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - patch
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - endpoints/restricted
+  verbs:
+  - create
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  - deployments/finalizers
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - patch
+  - watch
+- apiGroups:
+  - admissionregistration.k8s.io
+  resources:
+  - mutatingwebhookconfigurations
+  - validatingwebhookconfigurations
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - patch
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - patch
+  - watch
+- apiGroups:
+  - autoscaling
+  resources:
+  - horizontalpodautoscalers
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - patch
+  - watch
+- apiGroups:
+  - serving.knative.dev
+  - autoscaling.internal.knative.dev
+  - networking.internal.knative.dev
+  resources:
+  - '*'
+  - '*/status'
+  - '*/finalizers'
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - deletecollection
+  - patch
+  - watch
+- apiGroups:
+  - caching.internal.knative.dev
+  resources:
+  - images
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - patch
+  - watch
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -242,15 +242,15 @@ metadata:
     serving.knative.dev/release: "v0.11.0"
   name: knative-serving-podspecable-binding
 rules:
-  - apiGroups:
-      - serving.knative.dev
-    resources:
-      - configurations
-      - services
-    verbs:
-      - list
-      - watch
-      - patch
+- apiGroups:
+  - serving.knative.dev
+  resources:
+  - configurations
+  - services
+  verbs:
+  - list
+  - watch
+  - patch
 
 ---
 apiVersion: v1
@@ -274,9 +274,9 @@ roleRef:
   kind: ClusterRole
   name: system:auth-delegator
 subjects:
-  - kind: ServiceAccount
-    name: controller
-    namespace: knative-serving
+- kind: ServiceAccount
+  name: controller
+  namespace: knative-serving
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -291,9 +291,9 @@ roleRef:
   kind: ClusterRole
   name: custom-metrics-server-resources
 subjects:
-  - kind: ServiceAccount
-    name: horizontal-pod-autoscaler
-    namespace: kube-system
+- kind: ServiceAccount
+  name: horizontal-pod-autoscaler
+  namespace: kube-system
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -307,9 +307,9 @@ roleRef:
   kind: ClusterRole
   name: knative-serving-admin
 subjects:
-  - kind: ServiceAccount
-    name: controller
-    namespace: knative-serving
+- kind: ServiceAccount
+  name: controller
+  namespace: knative-serving
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -325,9 +325,9 @@ roleRef:
   kind: Role
   name: extension-apiserver-authentication-reader
 subjects:
-  - kind: ServiceAccount
-    name: controller
-    namespace: knative-serving
+- kind: ServiceAccount
+  name: controller
+  namespace: knative-serving
 
 ---
 
@@ -343,21 +343,21 @@ metadata:
   name: certificates.networking.internal.knative.dev
 spec:
   additionalPrinterColumns:
-    - JSONPath: .status.conditions[?(@.type=="Ready")].status
-      name: Ready
-      type: string
-    - JSONPath: .status.conditions[?(@.type=="Ready")].reason
-      name: Reason
-      type: string
+  - JSONPath: .status.conditions[?(@.type=="Ready")].status
+    name: Ready
+    type: string
+  - JSONPath: .status.conditions[?(@.type=="Ready")].reason
+    name: Reason
+    type: string
   group: networking.internal.knative.dev
   names:
     categories:
-      - knative-internal
-      - networking
+    - knative-internal
+    - networking
     kind: Certificate
     plural: certificates
     shortNames:
-      - kcert
+    - kcert
     singular: certificate
   scope: Namespaced
   subresources:
@@ -375,43 +375,43 @@ metadata:
   name: configurations.serving.knative.dev
 spec:
   additionalPrinterColumns:
-    - JSONPath: .status.latestCreatedRevisionName
-      name: LatestCreated
-      type: string
-    - JSONPath: .status.latestReadyRevisionName
-      name: LatestReady
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].status
-      name: Ready
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].reason
-      name: Reason
-      type: string
+  - JSONPath: .status.latestCreatedRevisionName
+    name: LatestCreated
+    type: string
+  - JSONPath: .status.latestReadyRevisionName
+    name: LatestReady
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].status
+    name: Ready
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].reason
+    name: Reason
+    type: string
   group: serving.knative.dev
   names:
     categories:
-      - all
-      - knative
-      - serving
+    - all
+    - knative
+    - serving
     kind: Configuration
     plural: configurations
     shortNames:
-      - config
-      - cfg
+    - config
+    - cfg
     singular: configuration
   scope: Namespaced
   subresources:
     status: {}
   versions:
-    - name: v1alpha1
-      served: true
-      storage: true
-    - name: v1beta1
-      served: true
-      storage: false
-    - name: v1
-      served: true
-      storage: false
+  - name: v1alpha1
+    served: true
+    storage: true
+  - name: v1beta1
+    served: true
+    storage: false
+  - name: v1
+    served: true
+    storage: false
 
 ---
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -424,12 +424,12 @@ spec:
   group: caching.internal.knative.dev
   names:
     categories:
-      - knative-internal
-      - caching
+    - knative-internal
+    - caching
     kind: Image
     plural: images
     shortNames:
-      - img
+    - img
     singular: image
   scope: Namespaced
   subresources:
@@ -446,29 +446,29 @@ metadata:
   name: ingresses.networking.internal.knative.dev
 spec:
   additionalPrinterColumns:
-    - JSONPath: .status.conditions[?(@.type=='Ready')].status
-      name: Ready
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].reason
-      name: Reason
-      type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].status
+    name: Ready
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].reason
+    name: Reason
+    type: string
   group: networking.internal.knative.dev
   names:
     categories:
-      - knative-internal
-      - networking
+    - knative-internal
+    - networking
     kind: Ingress
     plural: ingresses
     shortNames:
-      - ing
+    - ing
     singular: ingress
   scope: Namespaced
   subresources:
     status: {}
   versions:
-    - name: v1alpha1
-      served: true
-      storage: true
+  - name: v1alpha1
+    served: true
+    storage: true
 
 ---
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -480,17 +480,17 @@ metadata:
   name: metrics.autoscaling.internal.knative.dev
 spec:
   additionalPrinterColumns:
-    - JSONPath: .status.conditions[?(@.type=='Ready')].status
-      name: Ready
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].reason
-      name: Reason
-      type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].status
+    name: Ready
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].reason
+    name: Reason
+    type: string
   group: autoscaling.internal.knative.dev
   names:
     categories:
-      - knative-internal
-      - autoscaling
+    - knative-internal
+    - autoscaling
     kind: Metric
     plural: metrics
     singular: metric
@@ -509,36 +509,36 @@ metadata:
   name: podautoscalers.autoscaling.internal.knative.dev
 spec:
   additionalPrinterColumns:
-    - JSONPath: .status.desiredScale
-      name: DesiredScale
-      type: integer
-    - JSONPath: .status.actualScale
-      name: ActualScale
-      type: integer
-    - JSONPath: .status.conditions[?(@.type=='Ready')].status
-      name: Ready
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].reason
-      name: Reason
-      type: string
+  - JSONPath: .status.desiredScale
+    name: DesiredScale
+    type: integer
+  - JSONPath: .status.actualScale
+    name: ActualScale
+    type: integer
+  - JSONPath: .status.conditions[?(@.type=='Ready')].status
+    name: Ready
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].reason
+    name: Reason
+    type: string
   group: autoscaling.internal.knative.dev
   names:
     categories:
-      - knative-internal
-      - autoscaling
+    - knative-internal
+    - autoscaling
     kind: PodAutoscaler
     plural: podautoscalers
     shortNames:
-      - kpa
-      - pa
+    - kpa
+    - pa
     singular: podautoscaler
   scope: Namespaced
   subresources:
     status: {}
   versions:
-    - name: v1alpha1
-      served: true
-      storage: true
+  - name: v1alpha1
+    served: true
+    storage: true
 
 ---
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -550,45 +550,45 @@ metadata:
   name: revisions.serving.knative.dev
 spec:
   additionalPrinterColumns:
-    - JSONPath: .metadata.labels['serving\.knative\.dev/configuration']
-      name: Config Name
-      type: string
-    - JSONPath: .status.serviceName
-      name: K8s Service Name
-      type: string
-    - JSONPath: .metadata.labels['serving\.knative\.dev/configurationGeneration']
-      name: Generation
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].status
-      name: Ready
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].reason
-      name: Reason
-      type: string
+  - JSONPath: .metadata.labels['serving\.knative\.dev/configuration']
+    name: Config Name
+    type: string
+  - JSONPath: .status.serviceName
+    name: K8s Service Name
+    type: string
+  - JSONPath: .metadata.labels['serving\.knative\.dev/configurationGeneration']
+    name: Generation
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].status
+    name: Ready
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].reason
+    name: Reason
+    type: string
   group: serving.knative.dev
   names:
     categories:
-      - all
-      - knative
-      - serving
+    - all
+    - knative
+    - serving
     kind: Revision
     plural: revisions
     shortNames:
-      - rev
+    - rev
     singular: revision
   scope: Namespaced
   subresources:
     status: {}
   versions:
-    - name: v1alpha1
-      served: true
-      storage: true
-    - name: v1beta1
-      served: true
-      storage: false
-    - name: v1
-      served: true
-      storage: false
+  - name: v1alpha1
+    served: true
+    storage: true
+  - name: v1beta1
+    served: true
+    storage: false
+  - name: v1
+    served: true
+    storage: false
 
 ---
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -601,39 +601,39 @@ metadata:
   name: routes.serving.knative.dev
 spec:
   additionalPrinterColumns:
-    - JSONPath: .status.url
-      name: URL
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].status
-      name: Ready
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].reason
-      name: Reason
-      type: string
+  - JSONPath: .status.url
+    name: URL
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].status
+    name: Ready
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].reason
+    name: Reason
+    type: string
   group: serving.knative.dev
   names:
     categories:
-      - all
-      - knative
-      - serving
+    - all
+    - knative
+    - serving
     kind: Route
     plural: routes
     shortNames:
-      - rt
+    - rt
     singular: route
   scope: Namespaced
   subresources:
     status: {}
   versions:
-    - name: v1alpha1
-      served: true
-      storage: true
-    - name: v1beta1
-      served: true
-      storage: false
-    - name: v1
-      served: true
-      storage: false
+  - name: v1alpha1
+    served: true
+    storage: true
+  - name: v1beta1
+    served: true
+    storage: false
+  - name: v1
+    served: true
+    storage: false
 
 ---
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -647,46 +647,46 @@ metadata:
   name: services.serving.knative.dev
 spec:
   additionalPrinterColumns:
-    - JSONPath: .status.url
-      name: URL
-      type: string
-    - JSONPath: .status.latestCreatedRevisionName
-      name: LatestCreated
-      type: string
-    - JSONPath: .status.latestReadyRevisionName
-      name: LatestReady
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].status
-      name: Ready
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].reason
-      name: Reason
-      type: string
+  - JSONPath: .status.url
+    name: URL
+    type: string
+  - JSONPath: .status.latestCreatedRevisionName
+    name: LatestCreated
+    type: string
+  - JSONPath: .status.latestReadyRevisionName
+    name: LatestReady
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].status
+    name: Ready
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].reason
+    name: Reason
+    type: string
   group: serving.knative.dev
   names:
     categories:
-      - all
-      - knative
-      - serving
+    - all
+    - knative
+    - serving
     kind: Service
     plural: services
     shortNames:
-      - kservice
-      - ksvc
+    - kservice
+    - ksvc
     singular: service
   scope: Namespaced
   subresources:
     status: {}
   versions:
-    - name: v1alpha1
-      served: true
-      storage: true
-    - name: v1beta1
-      served: true
-      storage: false
-    - name: v1
-      served: true
-      storage: false
+  - name: v1alpha1
+    served: true
+    storage: true
+  - name: v1beta1
+    served: true
+    storage: false
+  - name: v1
+    served: true
+    storage: false
 
 ---
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -698,38 +698,38 @@ metadata:
   name: serverlessservices.networking.internal.knative.dev
 spec:
   additionalPrinterColumns:
-    - JSONPath: .spec.mode
-      name: Mode
-      type: string
-    - JSONPath: .status.serviceName
-      name: ServiceName
-      type: string
-    - JSONPath: .status.privateServiceName
-      name: PrivateServiceName
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].status
-      name: Ready
-      type: string
-    - JSONPath: .status.conditions[?(@.type=='Ready')].reason
-      name: Reason
-      type: string
+  - JSONPath: .spec.mode
+    name: Mode
+    type: string
+  - JSONPath: .status.serviceName
+    name: ServiceName
+    type: string
+  - JSONPath: .status.privateServiceName
+    name: PrivateServiceName
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].status
+    name: Ready
+    type: string
+  - JSONPath: .status.conditions[?(@.type=='Ready')].reason
+    name: Reason
+    type: string
   group: networking.internal.knative.dev
   names:
     categories:
-      - knative-internal
-      - networking
+    - knative-internal
+    - networking
     kind: ServerlessService
     plural: serverlessservices
     shortNames:
-      - sks
+    - sks
     singular: serverlessservice
   scope: Namespaced
   subresources:
     status: {}
   versions:
-    - name: v1alpha1
-      served: true
-      storage: true
+  - name: v1alpha1
+    served: true
+    storage: true
 
 ---
 apiVersion: v1
@@ -742,18 +742,18 @@ metadata:
   namespace: knative-serving
 spec:
   ports:
-    - name: http
-      port: 80
-      protocol: TCP
-      targetPort: 8012
-    - name: http2
-      port: 81
-      protocol: TCP
-      targetPort: 8013
-    - name: http-metrics
-      port: 9090
-      protocol: TCP
-      targetPort: 9090
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8012
+  - name: http2
+    port: 81
+    protocol: TCP
+    targetPort: 8013
+  - name: http-metrics
+    port: 9090
+    protocol: TCP
+    targetPort: 9090
   selector:
     app: activator
   type: ClusterIP
@@ -769,10 +769,10 @@ metadata:
   namespace: knative-serving
 spec:
   ports:
-    - name: http-metrics
-      port: 9090
-      protocol: TCP
-      targetPort: 9090
+  - name: http-metrics
+    port: 9090
+    protocol: TCP
+    targetPort: 9090
   selector:
     app: controller
 
@@ -787,9 +787,9 @@ metadata:
   namespace: knative-serving
 spec:
   ports:
-    - name: https-webhook
-      port: 443
-      targetPort: 8443
+  - name: https-webhook
+    port: 443
+    targetPort: 8443
   selector:
     role: webhook
 
@@ -801,14 +801,14 @@ metadata:
     serving.knative.dev/release: "v0.11.0"
   name: webhook.serving.knative.dev
 webhooks:
-  - admissionReviewVersions:
-      - v1beta1
-    clientConfig:
-      service:
-        name: webhook
-        namespace: knative-serving
-    failurePolicy: Fail
-    name: webhook.serving.knative.dev
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    service:
+      name: webhook
+      namespace: knative-serving
+  failurePolicy: Fail
+  name: webhook.serving.knative.dev
 ---
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: ValidatingWebhookConfiguration
@@ -817,14 +817,14 @@ metadata:
     serving.knative.dev/release: "v0.11.0"
   name: validation.webhook.serving.knative.dev
 webhooks:
-  - admissionReviewVersions:
-      - v1beta1
-    clientConfig:
-      service:
-        name: webhook
-        namespace: knative-serving
-    failurePolicy: Fail
-    name: validation.webhook.serving.knative.dev
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    service:
+      name: webhook
+      namespace: knative-serving
+  failurePolicy: Fail
+  name: validation.webhook.serving.knative.dev
 ---
 apiVersion: admissionregistration.k8s.io/v1beta1
 kind: ValidatingWebhookConfiguration
@@ -833,18 +833,18 @@ metadata:
     serving.knative.dev/release: "v0.11.0"
   name: config.webhook.serving.knative.dev
 webhooks:
-  - admissionReviewVersions:
-      - v1beta1
-    clientConfig:
-      service:
-        name: webhook
-        namespace: knative-serving
-    failurePolicy: Fail
-    name: config.webhook.serving.knative.dev
-    namespaceSelector:
-      matchExpressions:
-        - key: serving.knative.dev/release
-          operator: Exists
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    service:
+      name: webhook
+      namespace: knative-serving
+  failurePolicy: Fail
+  name: config.webhook.serving.knative.dev
+  namespaceSelector:
+    matchExpressions:
+    - key: serving.knative.dev/release
+      operator: Exists
 ---
 apiVersion: v1
 kind: Secret
@@ -889,59 +889,59 @@ spec:
         serving.knative.dev/release: "v0.11.0"
     spec:
       containers:
-        - env:
-            - name: POD_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
-            - name: POD_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
-            - name: SYSTEM_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: CONFIG_LOGGING_NAME
-              value: config-logging
-            - name: CONFIG_OBSERVABILITY_NAME
-              value: config-observability
-            - name: METRICS_DOMAIN
-              value: knative.dev/internal/serving
-          image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-activator:0.11.0
-          livenessProbe:
-            httpGet:
-              httpHeaders:
-                - name: k-kubelet-probe
-                  value: activator
-              path: /healthz
-              port: 8012
-          name: activator
-          ports:
-            - containerPort: 8012
-              name: http1
-            - containerPort: 8013
-              name: h2c
-            - containerPort: 9090
-              name: metrics
-            - containerPort: 8008
-              name: profiling
-          readinessProbe:
-            httpGet:
-              httpHeaders:
-                - name: k-kubelet-probe
-                  value: activator
-              path: /healthz
-              port: 8012
-          resources:
-            limits:
-              cpu: 1000m
-              memory: 600Mi
-            requests:
-              cpu: 300m
-              memory: 60Mi
-          securityContext:
-            allowPrivilegeEscalation: false
+      - env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: SYSTEM_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: CONFIG_LOGGING_NAME
+          value: config-logging
+        - name: CONFIG_OBSERVABILITY_NAME
+          value: config-observability
+        - name: METRICS_DOMAIN
+          value: knative.dev/internal/serving
+        image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-activator:0.11.0
+        livenessProbe:
+          httpGet:
+            httpHeaders:
+            - name: k-kubelet-probe
+              value: activator
+            path: /healthz
+            port: 8012
+        name: activator
+        ports:
+        - containerPort: 8012
+          name: http1
+        - containerPort: 8013
+          name: h2c
+        - containerPort: 9090
+          name: metrics
+        - containerPort: 8008
+          name: profiling
+        readinessProbe:
+          httpGet:
+            httpHeaders:
+            - name: k-kubelet-probe
+              value: activator
+            path: /healthz
+            port: 8012
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 600Mi
+          requests:
+            cpu: 300m
+            memory: 60Mi
+        securityContext:
+          allowPrivilegeEscalation: false
       serviceAccountName: controller
       terminationGracePeriodSeconds: 300
 ---
@@ -955,10 +955,10 @@ metadata:
 spec:
   maxReplicas: 20
   metrics:
-    - resource:
-        name: cpu
-        targetAverageUtilization: 100
-      type: Resource
+  - resource:
+      name: cpu
+      targetAverageUtilization: 100
+    type: Resource
   minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1
@@ -988,33 +988,33 @@ spec:
         serving.knative.dev/release: "v0.11.0"
     spec:
       containers:
-        - env:
-            - name: SYSTEM_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: CONFIG_LOGGING_NAME
-              value: config-logging
-            - name: CONFIG_OBSERVABILITY_NAME
-              value: config-observability
-            - name: METRICS_DOMAIN
-              value: knative.dev/serving
-          image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-autoscaler-hpa:0.11.0
-          name: autoscaler-hpa
-          ports:
-            - containerPort: 9090
-              name: metrics
-            - containerPort: 8008
-              name: profiling
-          resources:
-            limits:
-              cpu: 1000m
-              memory: 1000Mi
-            requests:
-              cpu: 100m
-              memory: 100Mi
-          securityContext:
-            allowPrivilegeEscalation: false
+      - env:
+        - name: SYSTEM_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: CONFIG_LOGGING_NAME
+          value: config-logging
+        - name: CONFIG_OBSERVABILITY_NAME
+          value: config-observability
+        - name: METRICS_DOMAIN
+          value: knative.dev/serving
+        image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-autoscaler-hpa:0.11.0
+        name: autoscaler-hpa
+        ports:
+        - containerPort: 9090
+          name: metrics
+        - containerPort: 8008
+          name: profiling
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1000Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        securityContext:
+          allowPrivilegeEscalation: false
       serviceAccountName: controller
 
 ---
@@ -1028,18 +1028,18 @@ metadata:
   namespace: knative-serving
 spec:
   ports:
-    - name: http
-      port: 8080
-      protocol: TCP
-      targetPort: 8080
-    - name: http-metrics
-      port: 9090
-      protocol: TCP
-      targetPort: 9090
-    - name: https-custom-metrics
-      port: 443
-      protocol: TCP
-      targetPort: 8443
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: http-metrics
+    port: 9090
+    protocol: TCP
+    targetPort: 9090
+  - name: https-custom-metrics
+    port: 443
+    protocol: TCP
+    targetPort: 8443
   selector:
     app: autoscaler
 
@@ -1067,54 +1067,54 @@ spec:
         serving.knative.dev/release: "v0.11.0"
     spec:
       containers:
-        - args:
-            - --secure-port=8443
-            - --cert-dir=/tmp
-          env:
-            - name: SYSTEM_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: CONFIG_LOGGING_NAME
-              value: config-logging
-            - name: CONFIG_OBSERVABILITY_NAME
-              value: config-observability
-            - name: METRICS_DOMAIN
-              value: knative.dev/serving
-          image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-autoscaler:0.11.0
-          livenessProbe:
-            httpGet:
-              httpHeaders:
-                - name: k-kubelet-probe
-                  value: autoscaler
-              path: /healthz
-              port: 8080
-          name: autoscaler
-          ports:
-            - containerPort: 8080
-              name: websocket
-            - containerPort: 9090
-              name: metrics
-            - containerPort: 8443
-              name: custom-metrics
-            - containerPort: 8008
-              name: profiling
-          readinessProbe:
-            httpGet:
-              httpHeaders:
-                - name: k-kubelet-probe
-                  value: autoscaler
-              path: /healthz
-              port: 8080
-          resources:
-            limits:
-              cpu: 300m
-              memory: 400Mi
-            requests:
-              cpu: 30m
-              memory: 40Mi
-          securityContext:
-            allowPrivilegeEscalation: false
+      - args:
+        - --secure-port=8443
+        - --cert-dir=/tmp
+        env:
+        - name: SYSTEM_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: CONFIG_LOGGING_NAME
+          value: config-logging
+        - name: CONFIG_OBSERVABILITY_NAME
+          value: config-observability
+        - name: METRICS_DOMAIN
+          value: knative.dev/serving
+        image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-autoscaler:0.11.0
+        livenessProbe:
+          httpGet:
+            httpHeaders:
+            - name: k-kubelet-probe
+              value: autoscaler
+            path: /healthz
+            port: 8080
+        name: autoscaler
+        ports:
+        - containerPort: 8080
+          name: websocket
+        - containerPort: 9090
+          name: metrics
+        - containerPort: 8443
+          name: custom-metrics
+        - containerPort: 8008
+          name: profiling
+        readinessProbe:
+          httpGet:
+            httpHeaders:
+            - name: k-kubelet-probe
+              value: autoscaler
+            path: /healthz
+            port: 8080
+        resources:
+          limits:
+            cpu: 300m
+            memory: 400Mi
+          requests:
+            cpu: 30m
+            memory: 40Mi
+        securityContext:
+          allowPrivilegeEscalation: false
       serviceAccountName: controller
 
 ---
@@ -1773,33 +1773,33 @@ spec:
         serving.knative.dev/release: "v0.11.0"
     spec:
       containers:
-        - env:
-            - name: SYSTEM_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: CONFIG_LOGGING_NAME
-              value: config-logging
-            - name: CONFIG_OBSERVABILITY_NAME
-              value: config-observability
-            - name: METRICS_DOMAIN
-              value: knative.dev/internal/serving
-          image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-controller:0.11.0
-          name: controller
-          ports:
-            - containerPort: 9090
-              name: metrics
-            - containerPort: 8008
-              name: profiling
-          resources:
-            limits:
-              cpu: 1000m
-              memory: 1000Mi
-            requests:
-              cpu: 100m
-              memory: 100Mi
-          securityContext:
-            allowPrivilegeEscalation: false
+      - env:
+        - name: SYSTEM_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: CONFIG_LOGGING_NAME
+          value: config-logging
+        - name: CONFIG_OBSERVABILITY_NAME
+          value: config-observability
+        - name: METRICS_DOMAIN
+          value: knative.dev/internal/serving
+        image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-controller:0.11.0
+        name: controller
+        ports:
+        - containerPort: 9090
+          name: metrics
+        - containerPort: 8008
+          name: profiling
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1000Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        securityContext:
+          allowPrivilegeEscalation: false
       serviceAccountName: controller
 
 ---
@@ -1851,33 +1851,33 @@ spec:
         serving.knative.dev/release: "v0.11.0"
     spec:
       containers:
-        - env:
-            - name: SYSTEM_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: CONFIG_LOGGING_NAME
-              value: config-logging
-            - name: CONFIG_OBSERVABILITY_NAME
-              value: config-observability
-            - name: METRICS_DOMAIN
-              value: knative.dev/serving
-          image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-webhook:0.11.0
-          name: webhook
-          ports:
-            - containerPort: 9090
-              name: metrics
-            - containerPort: 8008
-              name: profiling
-          resources:
-            limits:
-              cpu: 200m
-              memory: 200Mi
-            requests:
-              cpu: 20m
-              memory: 20Mi
-          securityContext:
-            allowPrivilegeEscalation: false
+      - env:
+        - name: SYSTEM_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: CONFIG_LOGGING_NAME
+          value: config-logging
+        - name: CONFIG_OBSERVABILITY_NAME
+          value: config-observability
+        - name: METRICS_DOMAIN
+          value: knative.dev/serving
+        image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-webhook:0.11.0
+        name: webhook
+        ports:
+        - containerPort: 9090
+          name: metrics
+        - containerPort: 8008
+          name: profiling
+        resources:
+          limits:
+            cpu: 200m
+            memory: 200Mi
+          requests:
+            cpu: 20m
+            memory: 20Mi
+        securityContext:
+          allowPrivilegeEscalation: false
       serviceAccountName: controller
 
 ---
@@ -1896,19 +1896,19 @@ metadata:
     serving.knative.dev/release: "v0.11.0"
   name: knative-serving-istio
 rules:
-  - apiGroups:
-      - networking.istio.io
-    resources:
-      - virtualservices
-      - gateways
-    verbs:
-      - get
-      - list
-      - create
-      - update
-      - delete
-      - patch
-      - watch
+- apiGroups:
+  - networking.istio.io
+  resources:
+  - virtualservices
+  - gateways
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - patch
+  - watch
 
 ---
 
@@ -1941,12 +1941,12 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-    - hosts:
-        - "*"
-      port:
-        name: http
-        number: 80
-        protocol: HTTP
+  - hosts:
+    - '*'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
 
 ---
 apiVersion: networking.istio.io/v1alpha3
@@ -1961,12 +1961,12 @@ spec:
   selector:
     istio: cluster-local-gateway
   servers:
-    - hosts:
-        - "*"
-      port:
-        name: http
-        number: 80
-        protocol: HTTP
+  - hosts:
+    - '*'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
 
 ---
 
@@ -2116,33 +2116,33 @@ spec:
         serving.knative.dev/release: "v0.11.0"
     spec:
       containers:
-        - env:
-            - name: SYSTEM_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: CONFIG_LOGGING_NAME
-              value: config-logging
-            - name: CONFIG_OBSERVABILITY_NAME
-              value: config-observability
-            - name: METRICS_DOMAIN
-              value: knative.dev/serving
-          image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-networking-istio:0.11.0
-          name: networking-istio
-          ports:
-            - containerPort: 9090
-              name: metrics
-            - containerPort: 8008
-              name: profiling
-          resources:
-            limits:
-              cpu: 1000m
-              memory: 1000Mi
-            requests:
-              cpu: 100m
-              memory: 100Mi
-          securityContext:
-            allowPrivilegeEscalation: false
+      - env:
+        - name: SYSTEM_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: CONFIG_LOGGING_NAME
+          value: config-logging
+        - name: CONFIG_OBSERVABILITY_NAME
+          value: config-observability
+        - name: METRICS_DOMAIN
+          value: knative.dev/serving
+        image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-networking-istio:0.11.0
+        name: networking-istio
+        ports:
+        - containerPort: 9090
+          name: metrics
+        - containerPort: 8008
+          name: profiling
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1000Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        securityContext:
+          allowPrivilegeEscalation: false
       serviceAccountName: controller
 
 ---
@@ -2150,4 +2150,3 @@ spec:
 ---
 
 ---
-

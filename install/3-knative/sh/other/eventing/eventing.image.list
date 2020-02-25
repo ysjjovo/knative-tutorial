@@ -1,0 +1,7 @@
+registry.cn-chengdu.aliyuncs.com/ysjjovo/eventing-cmd-broker-filter
+registry.cn-chengdu.aliyuncs.com/ysjjovo/eventing-cmd-broker-ingress
+registry.cn-chengdu.aliyuncs.com/ysjjovo/eventing-cmd-controller
+registry.cn-chengdu.aliyuncs.com/ysjjovo/eventing-cmd-in_memory-channel_controller
+registry.cn-chengdu.aliyuncs.com/ysjjovo/eventing-cmd-in_memory-channel_dispatcher
+registry.cn-chengdu.aliyuncs.com/ysjjovo/eventing-cmd-sources_controller
+registry.cn-chengdu.aliyuncs.com/ysjjovo/eventing-cmd-webhook

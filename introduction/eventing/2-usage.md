@@ -177,8 +177,9 @@ spec:
 - Steps： 由订阅列表组成，订阅元素必须实现Adressable接口
 - ChannelTemplate：指定使用的channel
 - Reply(可选)
+
 示例：
 - [定时发送事件到序列](https://knative.dev/docs/eventing/samples/sequence/sequence-terminal/index.html)
 - [定时发送事件到序列并回复](https://knative.dev/docs/eventing/samples/sequence/sequence-reply-to-event-display/index.html)
 - [串联多个序列](https://knative.dev/docs/eventing/samples/sequence/sequence-with-broker-trigger/index.html)
-- [演示broker,trigger,序列混合交互](https://knative.dev/docs/eventing/samples/sequence/sequence-with-broker-trigger/index.html)
+- [演示broker,trigger,序列交互](https://knative.dev/docs/eventing/samples/sequence/sequence-with-broker-trigger/index.html)

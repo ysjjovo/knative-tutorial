@@ -1,0 +1,3 @@
+registry.cn-chengdu.aliyuncs.com/kn-sample/helloworld-go-eventing:0.11.0
+registry.cn-chengdu.aliyuncs.com/kn-sample/rest-api-go
+registry.cn-chengdu.aliyuncs.com/kn-sample/telemetry-go
