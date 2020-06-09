@@ -1,6 +1,5 @@
 #!/bin/sh
-# sh 2-gen.sh 0.11.0 pcr-sz.paic.com.cn/knative-releases
-# sh 2-gen.sh 0.11.0 registry.cn-chengdu.aliyuncs.com/ysjjovo
+# sh 2-gen.sh 0.15.0 registry.cn-chengdu.aliyuncs.com/ysjjovo
 version=$1
 base_dir=$(sh ./get_base_dir.sh)
 repo_prefix=${2//\//\\/}
