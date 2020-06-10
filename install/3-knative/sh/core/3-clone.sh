@@ -1,5 +1,5 @@
 #!/bin/sh
-# sh 2-clone.sh 0.15.0 git@code.aliyun.com:lin
+# sh 3-clone.sh 0.15.0 git@code.aliyun.com:lin
 version=$1
 repo=$2
 base_dir=$(sh ./get_base_dir.sh)
