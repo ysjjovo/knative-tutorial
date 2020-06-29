@@ -39,9 +39,10 @@ core包含serving和eventing,谷歌镜像无法下载，可以通过阿里云海
 ```
 先运行第1，2步下载并生成Dockefile及yaml。
 ```bash
-version=0.11.0
+version=0.15.0
+hub_prefix='registry.cn-chengdu.aliyuncs.com/kn-release'
 sh 1-get.sh $version &&\
-sh 2-gen.sh $version
+sh 2-gen.sh $version $hub_prefix
 ```
 第3步clone仓库需要事先创建好对应的仓库，在target/dockerfile/core/0.11.0目录下会生成对应的Dockefile这里以eventing-cmd-apiserver_receive_adapter为例。
 - 使用阿里云镜像服务创建名为knative-release的命名空间
@@ -52,12 +53,13 @@ sh 2-gen.sh $version
 
 重复操作第2，3步将所有对应的仓库全部创建好。
 
-再运行后面所有的步骤完成knative的核心安装，包括clone、push所有的仓库，serving,eventing的安装。
+再运行后面所有的步骤完成knative的核心安装，包括clone、push所有的仓库，serving,istio的安装,注意istioctl需要先下载好放在6-istio.sh同级目录下。
 ```bash
-version=0.11.0
-repo_prefix='set me'
-sh 3-clone.sh $version $repo_prefix &&\
+version=0.15.0
+git_prefix='git@code.aliyun.com:lin'
+hub_prefix='registry.cn-chengdu.aliyuncs.com/istio-releases'
+sh 3-clone.sh $version $git_prefix &&\
 sh 4-push.sh $version &&\
 sh 5-serving.sh $version &&\
-sh 6-eventing.sh $version
+sh 6-istio.sh $version $hub_prefix
 ```

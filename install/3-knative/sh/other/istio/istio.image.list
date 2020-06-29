@@ -1,2 +1,2 @@
-istio/pilot:1.4.3
-istio/proxyv2:1.4.3
+registry.cn-chengdu.aliyuncs.com/istio-releases/proxyv2
+registry.cn-chengdu.aliyuncs.com/istio-releases/pilot

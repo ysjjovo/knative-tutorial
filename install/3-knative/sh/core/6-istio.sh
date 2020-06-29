@@ -1,12 +1,13 @@
-# istio安装
-运行如下脚本,需要科学上网
-```bash
-# Download and unpack Istio
-export ISTIO_VERSION=1.4.3
-curl -L https://git.io/getLatestIstio | sh -
-cd istio-${ISTIO_VERSION}/bin
+#!/bin/sh
+#sh 6-istio.sh 0.15.0 registry.cn-chengdu.aliyuncs.com/istio-releases
 
-cat << EOF > ./istio-minimal-operator.yaml
+version=$1
+hub_prefix=$2
+base_dir=$(sh ./get_base_dir.sh)
+
+dir=$base_dir/target/yaml/core/$version
+
+cat <<EOF >./istio-minimal-operator.yaml
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 spec:
@@ -46,8 +47,6 @@ spec:
               name: https
 EOF
 
-./istioctl manifest apply -f istio-minimal-operator.yaml --set hub=registry.cn-chengdu.aliyuncs.com/istio-releases
+./istioctl manifest apply -f istio-minimal-operator.yaml --set hub=$hub_prefix
 
-# 检查pod是否都是Running状态
-kubectl get pods --namespace istio-system
-```
+kubectl apply -f $dir/release.yaml

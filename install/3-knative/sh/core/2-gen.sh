@@ -1,8 +1,8 @@
 #!/bin/sh
-# sh 2-gen.sh 0.15.0 registry.cn-chengdu.aliyuncs.com/ysjjovo
+# sh 2-gen.sh 0.15.0 registry.cn-chengdu.aliyuncs.com/kn-release
 version=$1
 base_dir=$(sh ./get_base_dir.sh)
-repo_prefix=${2//\//\\/}
+hub_prefix=${2//\//\\/}
 
 dockerfile_dir=$base_dir/target/dockerfile/core/$version
 yaml_dir=$base_dir/target/yaml/core/$version
@@ -26,7 +26,7 @@ for ((i = 0; i < ${#arr[@]}; i += 1)); do
 FROM ${origin}
 EOF
         converted=${origin//\//\\/}
-        echo 's/'$converted'/'$repo_prefix'\/'$target_name:$version'/g' >>templete.sed
+        echo 's/'$converted'/'$hub_prefix'\/'$target_name:$version'/g' >>templete.sed
     done
 done
 

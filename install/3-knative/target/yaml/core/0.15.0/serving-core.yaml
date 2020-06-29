@@ -133,7 +133,7 @@ metadata:
 spec:
   # This is the Go import path for the binary that is containerized
   # and substituted here.
-  image: /serving-cmd-queue:0.15.0
+  image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-queue:0.15.0
 
 ---
 # Copyright 2018 The Knative Authors
@@ -446,7 +446,7 @@ metadata:
 data:
   # This is the Go import path for the binary that is containerized
   # and substituted here.
-  queueSidecarImage: /serving-cmd-queue:0.15.0
+  queueSidecarImage: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-queue:0.15.0
   _example: |
     ################################
     #                              #
@@ -1086,7 +1086,7 @@ spec:
       - name: activator
         # This is the Go import path for the binary that is containerized
         # and substituted here.
-        image: /serving-cmd-activator:0.15.0
+        image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-activator:0.15.0
         # The numbers are based on performance test results from
         # https://github.com/knative/serving/issues/1625#issuecomment-511930023
         resources:
@@ -1214,7 +1214,7 @@ spec:
       - name: autoscaler
         # This is the Go import path for the binary that is containerized
         # and substituted here.
-        image: /serving-cmd-autoscaler:0.15.0
+        image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-autoscaler:0.15.0
         resources:
           requests:
             cpu: 30m
@@ -1321,7 +1321,7 @@ spec:
       - name: controller
         # This is the Go import path for the binary that is containerized
         # and substituted here.
-        image: /serving-cmd-controller:0.15.0
+        image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-controller:0.15.0
         resources:
           requests:
             cpu: 100m
@@ -1410,7 +1410,7 @@ spec:
       - name: webhook
         # This is the Go import path for the binary that is containerized
         # and substituted here.
-        image: /serving-cmd-webhook:0.15.0
+        image: registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-webhook:0.15.0
         resources:
           requests:
             cpu: 100m

@@ -1,7 +1,8 @@
+registry.cn-chengdu.aliyuncs.com/ysjjovo/net-istio-cmd-controller
+registry.cn-chengdu.aliyuncs.com/ysjjovo/net-istio-cmd-webhook
 registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-activator
 registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-autoscaler
-registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-autoscaler-hpa
-registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-controller
-registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-networking-istio
 registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-queue
 registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-webhook
+registry.cn-chengdu.aliyuncs.com/ysjjovo/serving-cmd-controller
+

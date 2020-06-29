@@ -1,4 +1,5 @@
 #!/bin/sh
+#sh 5-serving.sh 0.15.0
 version=$1
 base_dir=$(sh ./get_base_dir.sh)
 
