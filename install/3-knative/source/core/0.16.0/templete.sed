@@ -1,0 +1,7 @@
+s/gcr.io\/knative-releases\/knative.dev\/net-istio\/cmd\/controller@sha256:d1a2143c0e7b6d5891426ca12e1de940c08caeafafe6ca4f23a560d03a0854c5/registry.cn-chengdu.aliyuncs.com\/kn-release\/net-istio-cmd-controller:0.16.0/g
+s/gcr.io\/knative-releases\/knative.dev\/net-istio\/cmd\/webhook@sha256:439b6d1669c8d010d4c54c37578dd6165e1f181d3595aa9b2d628f76a906f904/registry.cn-chengdu.aliyuncs.com\/kn-release\/net-istio-cmd-webhook:0.16.0/g
+s/gcr.io\/knative-releases\/knative.dev\/serving\/cmd\/activator@sha256:e743f3309af4b79fe6af377b7bd5ae059a422c0db3d6aed2ae48d79b8aa59edf/registry.cn-chengdu.aliyuncs.com\/kn-release\/serving-cmd-activator:0.16.0/g
+s/gcr.io\/knative-releases\/knative.dev\/serving\/cmd\/autoscaler@sha256:2ef460356b17481bc467fc7c35da581707dc490b1f32083457d6d4faed9ef300/registry.cn-chengdu.aliyuncs.com\/kn-release\/serving-cmd-autoscaler:0.16.0/g
+s/gcr.io\/knative-releases\/knative.dev\/serving\/cmd\/controller@sha256:30ce73388ae53e44edb52c1ef3b73b755e47004a90781fa9e0257cd021b20327/registry.cn-chengdu.aliyuncs.com\/kn-release\/serving-cmd-controller:0.16.0/g
+s/gcr.io\/knative-releases\/knative.dev\/serving\/cmd\/queue@sha256:ab38418f2e13dfc21d48c64af0589f4eae5c40fc34a5e02f48b24b7156391d22/registry.cn-chengdu.aliyuncs.com\/kn-release\/serving-cmd-queue:0.16.0/g
+s/gcr.io\/knative-releases\/knative.dev\/serving\/cmd\/webhook@sha256:f16c0e022203f70a4228fba7d4cd951739ee43b491af9dbc569f233c9588e92a/registry.cn-chengdu.aliyuncs.com\/kn-release\/serving-cmd-webhook:0.16.0/g

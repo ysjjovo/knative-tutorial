@@ -1,0 +1,1 @@
+FROM gcr.io/knative-releases/knative.dev/serving/cmd/networking/certmanager@sha256:df9353194798260cc4444edf58d1ab78e56e15a6ec6505cdee490cd81c50234f

@@ -1,0 +1,140 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    networking.knative.dev/certificate-provider: cert-manager
+    serving.knative.dev/controller: "true"
+    serving.knative.dev/release: "v0.12.0"
+  name: knative-serving-certmanager
+rules:
+- apiGroups:
+  - cert-manager.io
+  resources:
+  - certificates
+  - clusterissuers
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - patch
+  - watch
+- apiGroups:
+  - acme.cert-manager.io
+  resources:
+  - challenges
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - patch
+  - watch
+
+---
+apiVersion: v1
+data:
+  _example: |
+    ################################
+    #                              #
+    #    EXAMPLE CONFIGURATION     #
+    #                              #
+    ################################
+
+    # This block is not actually functional configuration,
+    # but serves to illustrate the available configuration
+    # options and document them in a way that is accessible
+    # to users that `kubectl edit` this config map.
+    #
+    # These sample configuration options may be copied out of
+    # this block and unindented to actually change the configuration.
+
+    # issuerRef is a reference to the issuer for this certificate.
+    # IssuerRef should be either `ClusterIssuer` or `Issuer`.
+    # Please refer `IssuerRef` in https://github.com/jetstack/cert-manager/blob/master/pkg/apis/certmanager/v1alpha1/types_certificate.go
+    # for more details about IssuerRef configuration.
+    issuerRef: |
+      kind: ClusterIssuer
+      name: letsencrypt-issuer
+kind: ConfigMap
+metadata:
+  labels:
+    networking.knative.dev/certificate-provider: cert-manager
+    serving.knative.dev/release: "v0.12.0"
+  name: config-certmanager
+  namespace: knative-serving
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    networking.knative.dev/certificate-provider: cert-manager
+    serving.knative.dev/release: "v0.12.0"
+  name: networking-certmanager
+  namespace: knative-serving
+spec:
+  selector:
+    matchLabels:
+      app: networking-certmanager
+  template:
+    metadata:
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+      labels:
+        app: networking-certmanager
+        serving.knative.dev/release: "v0.12.0"
+    spec:
+      containers:
+      - env:
+        - name: SYSTEM_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: CONFIG_LOGGING_NAME
+          value: config-logging
+        - name: CONFIG_OBSERVABILITY_NAME
+          value: config-observability
+        - name: METRICS_DOMAIN
+          value: knative.dev/serving
+        image: gcr.io/knative-releases/knative.dev/serving/cmd/networking/certmanager@sha256:df9353194798260cc4444edf58d1ab78e56e15a6ec6505cdee490cd81c50234f
+        name: networking-certmanager
+        ports:
+        - containerPort: 9090
+          name: metrics
+        - containerPort: 8008
+          name: profiling
+        resources:
+          limits:
+            cpu: 300m
+            memory: 400Mi
+          requests:
+            cpu: 30m
+            memory: 40Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+      serviceAccountName: controller
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: networking-certmanager
+    networking.knative.dev/certificate-provider: cert-manager
+    serving.knative.dev/release: "v0.12.0"
+  name: networking-certmanager
+  namespace: knative-serving
+spec:
+  ports:
+  - name: http-metrics
+    port: 9090
+    targetPort: 9090
+  - name: http-profiling
+    port: 8008
+    targetPort: 8008
+  selector:
+    app: networking-certmanager
+
+---
