@@ -1,0 +1,18 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: productpage
+  namespace: bookinfo
+spec:
+  template:
+    metadata:
+      name: productpage-v1
+    spec:
+      containers:
+        - image: REPO/istio/examples-bookinfo-productpage-v1:1.16.2
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: SERVICES_DOMAIN
+              value: bookinfo.example.com
+          ports:
+            - containerPort: 9080

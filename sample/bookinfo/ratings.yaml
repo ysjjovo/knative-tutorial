@@ -1,0 +1,18 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: ratings
+  namespace: bookinfo
+spec:
+  template:
+    metadata:
+      name: ratings-v1
+    spec:
+      containers:
+        - image: REPO/istio/examples-bookinfo-ratings-v1:1.16.2
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: SERVICES_DOMAIN
+              value: bookinfo.example.com
+          ports:
+            - containerPort: 9080
