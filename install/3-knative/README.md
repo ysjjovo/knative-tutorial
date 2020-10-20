@@ -55,7 +55,7 @@ sh 2-gen.sh $version $hub_prefix
 
 再运行后面所有的步骤完成knative的核心安装，包括clone、push所有的仓库，serving,istio的安装,注意istioctl需要先下载好放在6-istio.sh同级目录下。
 ```bash
-version=0.15.0
+version=0.16.0
 git_prefix='git@code.aliyun.com:lin'
 hub_prefix='registry.cn-chengdu.aliyuncs.com/istio-releases'
 sh 3-clone.sh $version $git_prefix &&\
