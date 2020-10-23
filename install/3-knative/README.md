@@ -111,6 +111,7 @@ sh 7-tracing.sh $ver
 - grafana ```kubectl edit -n knative-monitoring svc grafana```
 - kibana ```kubectl edit -n knative-monitoring svc kibana-logging```
 - tracing ```kubectl edit -n istio-system svc jaeger-query```
+- es ```kubectl edit -n knative-monitoring elasticsearch-logging```
 
 # 其它
 要使用tracing还需要
@@ -131,4 +132,38 @@ logging.request-log-template: '{"httpRequest": {"requestMethod": "{{.Request.Met
     "{{js .Request.UserAgent}}", "remoteIp": "{{js .Request.RemoteAddr}}", "serverIp":
     "{{.Revision.PodIP}}", "referer": "{{js .Request.Referer}}", "latency": "{{.Response.Latency}}s",
     "protocol": "{{.Request.Proto}}"}, "traceId": "{{index .Request.Header "X-B3-Traceid"}}"}'
+```
+直接从es查询访问日志,具体参数替换成实际值
+```shell
+POST http://192.168.99.2:32119/logstash-2020.10.20/_search?from=0&size=10
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"match": {"kubernetes.labels.serving_knative_dev/revision": "stock-service-example-first"}}
+      ],
+      "filter": [
+        {"range": {"@timestamp": {"gte": "2010-10-20T16:30:00", "lt": "2020-10-20T17:00:00"}}},
+        {"exists": {"field": "httpRequest"}}
+      ]
+    }
+  }
+}
+```
+获取用户日志
+```shell
+POST http://192.168.99.2:32119/logstash-2020.10.20/_search?from=0&size=10
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"match": {"kubernetes.labels.serving_knative_dev/revision": "stock-service-example-first"}},
+        {"match": {"kubernetes.container_name": "user-container"}}
+      ],
+      "filter": [
+        {"range": {"@timestamp": {"gte": "2010-10-20T16:30:00", "lt": "2020-10-20T17:00:00"}}}
+      ]
+    }
+  }
+}
 ```

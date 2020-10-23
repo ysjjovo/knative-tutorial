@@ -55,9 +55,10 @@ metadata:
     serving.knative.dev/release: "v0.16.0"
 spec:
   ports:
-  - name: http
-    port: 9411
+    - name: http
+      port: 9411
   selector:
     app: jaeger
 
 ---
+
